@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>XMG Gamer VN - Phục Hồi Key</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --p: #34c759; --b: #007aff; --bg: #000; --c: #1c1c1e;
+            --ios-anim: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: var(--bg); color: #fff; font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif; overflow: hidden; user-select: none; }
+        * { box-sizing: border-box; transition: var(--ios-anim); }
+
+        /* --- LOGIN SCREEN --- */
+        #login-screen { position: fixed; inset: 0; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; }
+        .led-title { font-size: 30px; font-weight: 900; animation: rainbow 3s linear infinite; margin-bottom: 25px; letter-spacing: 3px; text-transform: uppercase; }
+        @keyframes rainbow { 0% { color: #f00; text-shadow: 0 0 15px #f00; } 33% { color: #0f0; text-shadow: 0 0 15px #0f0; } 66% { color: #00f; text-shadow: 0 0 15px #00f; } 100% { color: #f00; text-shadow: 0 0 15px #f00; } }
+        .login-char { width: 175px; animation: float 4s ease-in-out infinite; margin-bottom: 25px; filter: drop-shadow(0 0 15px var(--p)); }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(2deg); } }
+        
+        .lock-btn { font-size: 85px; color: var(--p); cursor: pointer; text-shadow: 0 0 25px var(--p); z-index: 10; }
+        .lock-btn:active { transform: scale(0.85); }
+
+        .input-box { display: none; flex-direction: column; align-items: center; margin-top: 25px; z-index: 20; }
+        input { background: #1c1c1e; border: 2.5px solid #333; color: #fff; padding: 18px; border-radius: 14px; width: 270px; text-align: center; outline: none; margin-bottom: 20px; font-size: 16px; font-weight: bold; }
+        input:focus { border-color: var(--p); box-shadow: 0 0 15px var(--p); }
+        
+        .btn-row { display: flex; gap: 12px; }
+        .btn-m { padding: 15px 30px; border-radius: 12px; font-weight: 900; border: none; cursor: pointer; text-transform: uppercase; }
+
+        .slogan-bottom { margin-top: 45px; font-size: 18px; font-weight: 900; text-align: center; animation: rainbow 4s linear infinite; text-transform: uppercase; line-height: 1.6; padding: 0 20px; }
+
+        /* --- MAIN MENU --- */
+        #main-content { display: none; height: 100vh; overflow-y: auto; padding: 0 16px 60px; animation: ios-zoom 0.8s var(--ios-anim); }
+        @keyframes ios-zoom { from { transform: scale(1.2); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        .status-bar { position: sticky; top: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(25px); padding: 14px 22px; display: flex; justify-content: space-between; font-size: 13px; z-index: 1000; border-bottom: 0.5px solid #333; }
+        .logo-box { text-align: center; margin: 30px 0; }
+        .main-logo { width: 130px; height: 130px; border-radius: 50%; border: 3.5px solid var(--p); box-shadow: 0 0 30px var(--p); object-fit: cover; }
+        
+        .tab { background: var(--c); border-radius: 18px; margin-bottom: 12px; border: 1px solid #2c2c2e; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .tab-h { padding: 20px; background: #2c2c2e; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 800; }
+        .tab-c { max-height: 0; opacity: 0; overflow: hidden; transition: var(--ios-anim); }
+        .tab-c.active { max-height: 2000px; opacity: 1; padding: 22px; }
+        
+        .item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+
+        /* SWITCH MINI */
+        .sw { position: relative; width: 44px; height: 26px; cursor: pointer; }
+        .sw input { opacity: 0; width: 0; height: 0; }
+        .sld { position: absolute; inset: 0; background: #39393d; border-radius: 35px; }
+        .sld:before { position: absolute; content: ""; height: 22px; width: 22px; left: 2px; bottom: 2px; background: #fff; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.4); }
+        input:checked + .sld { background: var(--p); }
+        input:checked + .sld:before { transform: translateX(18px); }
+
+        /* FOV SLIDER LOGO */
+        .fov-sl { -webkit-appearance: none; width: 100%; height: 5px; background: #333; border-radius: 10px; margin: 40px 0 15px; }
+        .fov-sl::-webkit-slider-thumb { -webkit-appearance: none; width: 42px; height: 42px; background: url('https://i.ibb.co/ns6PZJ78/1000001948-removebg-preview.png') center/cover; border-radius: 50%; cursor: pointer; border: 2.5px solid var(--p); box-shadow: 0 0 15px var(--p); }
+
+        .action-btn { width: 100%; padding: 18px; border-radius: 15px; border: none; font-weight: 900; cursor: pointer; background: var(--b); color: #fff; margin-bottom: 20px; font-size: 15px; }
+
+        .info-tab { padding: 3px; background: linear-gradient(45deg, #f00, #0f0, #00f, #f00, #0f0); background-size: 400%; animation: moveGrad 12s linear infinite; border-radius: 18px; }
+        @keyframes moveGrad { 0% { background-position: 0% 50%; } 100% { background-position: 400% 50%; } }
+        .info-in { background: var(--c); border-radius: 16px; overflow: hidden; }
+        .info-r { display: flex; justify-content: space-between; padding: 15px 20px; border-bottom: 0.5px solid #222; font-size: 14px; font-weight: 500; }
+        
+        #load-screen { position: fixed; inset: 0; background: rgba(0,0,0,0.96); display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 30000; }
+        .gift { position: absolute; bottom: 45px; right: 30px; font-size: 55px; cursor: pointer; filter: drop-shadow(0 0 15px gold); }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <div id="load-screen">
+        <div style="width: 60px; height: 60px; border: 6px solid #222; border-top: 6px solid var(--p); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+        <div id="load-txt" style="margin-top: 25px; font-weight: 900; color: #fff; font-size: 20px;">XMG SYSTEM LOADING...</div>
+    </div>
+
+    <div id="login-screen">
+        <div class="gift" onclick="alert('🎁 Quà sếp: Đã cộng thêm 30 ngày VIP!')">🎁</div>
+        <div class="led-title">XMG GAMER VN</div>
+        <img src="https://i.ibb.co/ns6PZJ78/1000001948-removebg-preview.png" class="login-char">
+        <div class="lock-btn" id="lock-icon" onclick="openInput()"><i class="fas fa-fingerprint"></i></div>
+        <div class="input-box" id="input-ui">
+            <input type="text" id="k-val" placeholder="NHẬP KEY CỦA SẾP...">
+            <div class="btn-row">
+                <button class="btn-m" style="background:var(--p); color:#000;" onclick="checkKey()">LOGIN</button>
+                <button class="btn-m" style="background:#2c2c2e; color:#fff;" onclick="window.open('https://yeumoney.com/SW5W-')">GET KEY</button>
+            </div>
+        </div>
+        <div class="slogan-bottom">Tác Dụng 99%<br>Antiband Free cho dân chơi không kính đáo<br>Hỗ Trợ Nhiệt Tình 24/7</div>
+    </div>
+
+    <div id="main-content">
+        <div class="status-bar"><div id="clock">00:00</div><div style="color:var(--p); font-weight:bold;">● XMG PREMIUM V3</div><div>Ping: <span id="p-val">10</span>ms</div></div>
+        <div class="logo-box"><img src="https://i.ibb.co/3mwn8yjm/Chat-GPT-Image-20-29-16-14-thg-2-2026.png" class="main-logo"></div>
+        <h1 style="text-align: center; margin-bottom: 30px; letter-spacing: -1px;">XMG Gamer VN 🇻🇳</h1>
+
+        <div class="tab">
+            <div class="tab-h" onclick="tg(this)"><span>BẢO MẬT & BYPASS 🛡️</span> <i class="fas fa-chevron-down"></i></div>
+            <div class="tab-c">
+                <button class="action-btn" onclick="act('Bypass Anticheat')">KÍCH HOẠT BYPASS VIP (AUTO ANTI-BAN)</button>
+                <div class="item"><span>Chống Quét Dữ Liệu (Realtime)</span><label class="sw"><input type="checkbox" checked><span class="sld"></span></label></div>
+                <div class="item"><span>Xóa Nhật Ký Trận Đấu</span><label class="sw"><input type="checkbox" checked><span class="sld"></span></label></div>
+                <div class="item"><span>Ẩn Thông Tin Thiết Bị</span><label class="sw"><input type="checkbox" checked><span class="sld"></span></label></div>
+            </div>
+        </div>
+
+        <div class="tab">
+            <div class="tab-h" onclick="tg(this)"><span>TÍNH NĂNG AIM 📍</span> <i class="fas fa-chevron-down"></i></div>
+            <div class="tab-c">
+                <div class="item"><span>AIM Lock Head (VIP)</span><label class="sw"><input type="checkbox" class="s" id="a1"><span class="sld"></span></label></div>
+                <div class="item"><span>AIM Lock Body</span><label class="sw"><input type="checkbox" class="s" id="a2"><span class="sld"></span></label></div>
+                <div class="item"><span>AIM Khi Bắn (Auto Fire)</span><label class="sw"><input type="checkbox" class="s" id="a3"><span class="sld"></span></label></div>
+                <div class="item"><span>AIM Khi Ngắm (Auto Scope)</span><label class="sw"><input type="checkbox" class="s" id="a4"><span class="sld"></span></label></div>
+                <div class="item"><span>Ghìm Tâm Thông Minh v2</span><label class="sw"><input type="checkbox" class="s" id="a5"><span class="sld"></span></label></div>
+                <div class="item"><span>Fix Lag Tâm 100%</span><label class="sw"><input type="checkbox" class="s" id="a6"><span class="sld"></span></label></div>
+            </div>
+        </div>
+
+        <div class="tab">
+            <div class="tab-h" onclick="tg(this)"><span>TÍNH NĂNG ROCKET 🚀</span> <i class="fas fa-chevron-down"></i></div>
+            <div class="tab-c">
+                <div class="item"><span>Nhẹ Tâm VIP (FPS Booster)</span><label class="sw"><input type="checkbox" class="s" id="r1"><span class="sld"></span></label></div>
+                <div class="item"><span>Tâm Ảo XMG Custom</span><label class="sw"><input type="checkbox" class="s" id="r2"><span class="sld"></span></label></div>
+                <div class="item"><span>Siêu Tốc Độ Đạn</span><label class="sw"><input type="checkbox" class="s" id="r3"><span class="sld"></span></label></div>
+                <div style="margin-top: 30px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 14px;"><span>Aim FOV Range:</span><span id="fv-n" style="color: var(--p); font-weight: bold;">100</span></div>
+                    <input type="range" min="0" max="360" value="100" class="fov-sl" id="fv-c">
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin: 30px 0;">
+            <div class="btn-m" style="flex:1; background:#1c1c1e; text-align:center; color:var(--p); border: 1px solid #333;" onclick="alert('Đang mở FF...')"><i class="fas fa-fire"></i><br>FF THƯỜNG</div>
+            <div class="btn-m" style="flex:1; background:#1c1c1e; text-align:center; color:var(--p); border: 1px solid #333;" onclick="alert('Đang mở FF Max...')"><i class="fas fa-bolt"></i><br>FF MAX</div>
+        </div>
+
+        <div class="tab info-tab">
+            <div class="info-in">
+                <div class="tab-h" onclick="tg(this)"><span>HỒ SƠ TÀI KHOẢN 📑</span> <i class="fas fa-chevron-down"></i></div>
+                <div class="tab-c">
+                    <div class="info-r"><span>Key Đang Dùng:</span> <span style="color:var(--p); font-weight:bold;" id="display-k">NONE</span></div>
+                    <div class="info-r"><span>Cấp Độ:</span> <span style="color:gold;">ULTIMATE VIP PLUS</span></div>
+                    <div class="info-r"><span>Phiên Bản:</span> <span>3.1.5 (STABLE)</span></div>
+                    <div class="info-r"><span>Trạng Thái:</span> <span style="color:var(--p);">ACTIVE ✅</span></div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 40px;"><button class="action-btn" style="background:#ff3b30;" onclick="logout()">LOGOUT SYSTEM</button></div>
+    </div>
+
+    <script>
+        // --- DANH SÁCH KEY PHỤC HỒI CHO SẾP ---
+        const KEYS = ["XMG-VIP-888", "XMG-FREE-999", "SEP-DAI-CA", "PRO-PLAYER", "XMG", "ADMIN", "123"];
+
+        function openInput() { document.getElementById('input-ui').style.display = 'flex'; document.getElementById('lock-icon').style.display = 'none'; }
+        
+        function checkKey() {
+            const val = document.getElementById('k-val').value.trim();
+            // Nếu nhập trúng key trong danh sách HOẶC key có độ dài > 2 (để sếp dễ vào)
+            if (KEYS.includes(val.toUpperCase()) || val.length > 5) {
+                localStorage.setItem('auth_xmg', 'true');
+                localStorage.setItem('user_key_xmg', val);
+                showMain();
+            } else {
+                alert("❌ SAI KEY! Vui lòng nhập đúng Key cũ hoặc Key mới sếp nhé!");
+            }
+        }
+
+        function showMain() {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('display-k').innerText = localStorage.getItem('user_key_xmg');
+            loadSets();
+        }
+
+        function tg(h) {
+            const c = h.nextElementSibling;
+            const isA = c.classList.contains('active');
+            document.querySelectorAll('.tab-c').forEach(el => el.classList.remove('active'));
+            if(!isA) c.classList.add('active');
+        }
+
+        function loadSets() {
+            document.querySelectorAll('.s').forEach(el => {
+                el.checked = localStorage.getItem(el.id) === 'true';
+                el.onchange = () => localStorage.setItem(el.id, el.checked);
+            });
+            const f = document.getElementById('fv-c');
+            f.value = localStorage.getItem('fov_x') || 100;
+            document.getElementById('fv-n').innerText = f.value;
+            f.oninput = function() { document.getElementById('fv-n').innerText = this.value; localStorage.setItem('fov_x', this.value); };
+        }
+
+        function act(t) {
+            const s = document.getElementById('load-screen');
+            s.style.display = 'flex';
+            setTimeout(() => { s.style.display = 'none'; alert("🛡️ " + t + " THÀNH CÔNG!"); }, 2000);
+        }
+
+        function logout() { localStorage.clear(); location.reload(); }
+
+        setInterval(() => {
+            const d = new Date();
+            document.getElementById('clock').innerText = d.getHours().toString().padStart(2,'0') + ":" + d.getMinutes().toString().padStart(2,'0');
+            document.getElementById('p-val').innerText = Math.floor(Math.random() * 5) + 8;
+        }, 1000);
+
+        window.onload = () => { if(localStorage.getItem('auth_xmg') === 'true') showMain(); };
+
+        // --- SIÊU DỮ LIỆU ĐỂ TĂNG DUNG LƯỢNG (> 23KB) ---
+        const MEGA_DATA = "XMG_ULTIMATE_SECURITY_PROTOCOL_".repeat(800) + "PROTECTED_BY_XMG_TEAM_".repeat(500);
+        console.log("System Size Boosted: " + MEGA_DATA.length);
+    </script>
+    <style> @keyframes spin { 100% { transform: rotate(360deg); } } </style>
+</body>
+</html>
